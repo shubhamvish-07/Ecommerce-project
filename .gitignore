@@ -2,6 +2,23 @@
 .idea/
 **/target/
 /target/
+target/
+build/
+
+# Maven-generated files
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Eclipse generated files
+.project
+.classpath
 
 # Local uploads and investigation notes are not deployable source assets
 **/uploads/
