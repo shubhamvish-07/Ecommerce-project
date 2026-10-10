@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: http://localhost:8080; connect-src 'self' http://localhost:8080; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="no-referrer">
+
+<title>Mul &amp Warp — Account</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap"
+    rel="stylesheet"
+>
+
+<link rel="stylesheet" href="auth.css">
+
+</head>
+
+<body>
+
+<header class="head">
+    <div class="wrap head-in">
+
+    <a href="index.html" class="mark">
+        Mul <span>&amp</span> Warp
+    </a>
+
+    <a href="index.html" class="back-link">
+        ← Back to shop
+    </a>
+
+</div>
+
+</header>
+
+<main class="auth-page">
+
+<section class="auth-card">
+
+    <div class="auth-intro">
+
+        <span class="eyebrow">YOUR ACCOUNT</span>
+
+        <h1 id="formTitle">Welcome back.</h1>
+
+        <p id="formDescription">
+            Sign in to continue shopping and view your orders.
+        </p>
+
+    </div>
+
+
+    <!-- LOGIN FORM -->
+
+    <form id="loginForm" class="auth-form">
+
+        <div class="field">
+
+            <label for="loginEmail">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+            >
+
+            <small
+                class="field-error"
+                id="loginEmailError">
+            </small>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="loginPassword">
+                Password
+            </label>
+
+            <div class="password-wrap">
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="show-password"
+                    data-target="loginPassword">
+                    Show
+                </button>
+
+            </div>
+
+            <small
+                class="field-error"
+                id="loginPasswordError">
+            </small>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="submit-btn">
+            Sign in
+        </button>
+
+        <p
+            class="form-message"
+            id="loginMessage">
+        </p>
+
+    </form>
+
+
+    <!-- REGISTER FORM -->
+
+    <form
+        id="registerForm"
+        class="auth-form hidden">
+
+        <div class="field">
+
+            <label for="registerName">
+                Full name
+            </label>
+
+            <input
+                type="text"
+                id="registerName"
+                placeholder="Your name"
+                autocomplete="name"
+                required
+            >
+
+            <small
+                class="field-error"
+                id="registerNameError">
+            </small>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="registerEmail">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="registerEmail"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+            >
+
+            <small
+                class="field-error"
+                id="registerEmailError">
+            </small>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="registerPassword">
+                Password
+            </label>
+
+            <div class="password-wrap">
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                    minlength="12"
+                    maxlength="72"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="show-password"
+                    data-target="registerPassword">
+                    Show
+                </button>
+
+            </div>
+
+            <small
+                class="field-error"
+                id="registerPasswordError">
+            </small>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="submit-btn">
+            Sign up
+        </button>
+
+        <p
+            class="form-message"
+            id="registerMessage">
+        </p>
+
+    </form>
+
+
+    <!-- LOGIN / SIGN UP LINK -->
+
+    <div class="switch">
+
+        <span id="switchText">
+            Don't have an account?
+        </span>
+
+        <a
+            href="#register"
+            id="switchLink">
+            Sign up
+        </a>
+
+    </div>
+
+</section>
+
+
+</main>
+
+<footer>
+
+
+<div class="wrap foot-in">
+
+    <span>
+        © 2026 Mul &ampWarp, Mumbai
+    </span>
+
+    <nav class="foot-links">
+
+        <a href="#">
+            Privacy
+        </a>
+
+        <a href="#">
+            Terms
+        </a>
+
+        <a href="#">
+            Contact
+        </a>
+
+    </nav>
+
+</div>
+
+</footer>
+
+<script src="auth.js"></script>
+
+</body>
+</html>

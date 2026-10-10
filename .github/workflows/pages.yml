@@ -1,0 +1,65 @@
+name: Deploy storefront to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare static site
+        env:
+          API_BASE_URL: ${{ vars.API_BASE_URL }}
+        run: |
+          python - <<'PY'
+          import os
+          import pathlib
+          import shutil
+
+          api_base = os.environ["API_BASE_URL"].rstrip("/")
+          if not api_base.startswith("https://"):
+              raise SystemExit("Set the API_BASE_URL repository variable to the HTTPS Render API URL.")
+
+          source = pathlib.Path("ecommerce-frontend")
+          destination = pathlib.Path("_site")
+          shutil.copytree(source, destination, dirs_exist_ok=True)
+
+          for file in destination.rglob("*"):
+              if file.is_file() and file.suffix in {".html", ".js"}:
+                  content = file.read_text(encoding="utf-8")
+                  file.write_text(
+                      content.replace("http://localhost:8080", api_base),
+                      encoding="utf-8",
+                  )
+
+          (destination / ".nojekyll").touch()
+          PY
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

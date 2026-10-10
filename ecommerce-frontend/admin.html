@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: http://localhost:8080; connect-src 'self' http://localhost:8080; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="no-referrer">
+    <title>Product management — Mul &amp; Warp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<header class="head">
+    <div class="wrap head-in">
+        <a href="index.html" class="mark">Mul <span>&amp;</span> Warp</a>
+        <a href="index.html" class="back-link">Back to shop</a>
+    </div>
+</header>
+
+<main class="admin-page wrap">
+    <div class="admin-heading">
+        <span class="eyebrow">ADMINISTRATION</span>
+        <h1>Product management</h1>
+        <p>Add products to the catalogue and review active products.</p>
+    </div>
+
+    <p id="accessMessage" class="form-message error" role="status" aria-live="polite">
+        Checking administrator access…
+    </p>
+
+    <div id="adminWorkspace" class="admin-workspace" hidden>
+        <section class="admin-card" aria-labelledby="addProductHeading">
+            <h2 id="addProductHeading">Add a product</h2>
+            <form id="productForm" class="admin-form" enctype="multipart/form-data">
+                <div class="admin-fields">
+                    <div class="field">
+                        <label for="name">Product name</label>
+                        <input id="name" name="name" type="text" maxlength="255" required>
+                    </div>
+                    <div class="field">
+                        <label for="category">Category</label>
+                        <input id="category" name="category" type="text" maxlength="100" required>
+                    </div>
+                    <div class="field field-wide">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" rows="4" maxlength="2000"></textarea>
+                    </div>
+                    <div class="field">
+                        <label for="price">Price (INR)</label>
+                        <input id="price" name="price" type="number" min="0.01" step="0.01" required>
+                    </div>
+                    <div class="field">
+                        <label for="stock">Stock / quantity</label>
+                        <input id="stock" name="stock" type="number" min="0" step="1" required>
+                    </div>
+                    <div class="field">
+                        <label for="color">Color</label>
+                        <input id="color" name="color" type="text" maxlength="100">
+                    </div>
+                    <div class="field">
+                        <label for="image">Product image</label>
+                        <input id="image" name="image" type="file" accept="image/jpeg,image/png">
+                        <small class="field-hint">JPEG or PNG; up to 5 MB.</small>
+                    </div>
+                </div>
+                <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+                <button id="submitProduct" class="submit-btn" type="submit">Add product</button>
+                <button id="cancelEdit" class="secondary-btn" type="button" hidden>Cancel edit</button>
+            </form>
+        </section>
+
+        <section class="admin-card" aria-labelledby="productListHeading">
+            <div class="list-heading">
+                <div>
+                    <h2 id="productListHeading">Active products</h2>
+                    <p id="productCount" class="field-hint"></p>
+                </div>
+                <button id="refreshProducts" class="secondary-btn" type="button">Refresh list</button>
+            </div>
+            <p id="listMessage" class="form-message" role="status" aria-live="polite"></p>
+            <div id="productList" class="product-list"></div>
+        </section>
+
+        <section class="admin-card" aria-labelledby="ordersHeading">
+            <div class="list-heading">
+                <div>
+                    <h2 id="ordersHeading">Orders</h2>
+                    <p class="field-hint">Review orders and update their status.</p>
+                </div>
+                <div class="list-actions">
+                    <label class="field-hint" for="orderStatusFilter">Filter</label>
+                    <select id="orderStatusFilter" class="status-filter">
+                        <option value="">All statuses</option>
+                        <option value="PLACED">Placed</option>
+                        <option value="SHIPPED">Shipped</option>
+                        <option value="DELIVERED">Delivered</option>
+                        <option value="CANCELLED">Cancelled</option>
+                    </select>
+                    <button id="refreshOrders" class="secondary-btn" type="button">Refresh orders</button>
+                </div>
+            </div>
+            <p id="ordersMessage" class="form-message" role="status" aria-live="polite"></p>
+            <div id="adminOrdersList" class="admin-orders-list"></div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="wrap foot-in">
+        <span>© 2026 Mul &amp; Warp, Mumbai</span>
+        <nav class="foot-links" aria-label="Footer"><a href="index.html">Shop</a></nav>
+    </div>
+</footer>
+
+<script src="account.js"></script>
+<script src="admin.js?v=20261010-size-stock1"></script>
+</body>
+</html>

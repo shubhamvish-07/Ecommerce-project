@@ -1,0 +1,364 @@
+:root {
+    --paper: #F2F1EC;
+    --surface: #FFFFFF;
+    --ink: #141A2E;
+    --muted: #5E6577;
+    --line: #DEDBD2;
+    --accent: #26346B;
+    --accent-soft: #E7E9F2;
+    --on-accent: #F4F3EE;
+    --error: #9E3B2E;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Karla, ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.wrap {
+    width: min(1240px, calc(100% - 2.5rem));
+    margin-inline: auto;
+}
+
+/* ============================== HEADER ================================ */
+.head {
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+}
+
+.head-in {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mark {
+    font-family: Newsreader, Georgia, serif;
+    font-size: 1.45rem;
+    line-height: 1;
+}
+
+.mark span {
+    color: var(--accent);
+    font-style: italic;
+}
+
+.back-link {
+    color: var(--muted);
+    font-size: 0.9rem;
+    transition: color 0.15s ease;
+}
+
+.back-link:hover {
+    color: var(--ink);
+}
+
+.account-area {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.account-btn {
+    display: inline-flex;
+    min-height: 34px;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+.account-btn:hover {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+}
+
+/* ============================== AUTH PAGE ================================ */
+.auth-page {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    padding: 4rem 1.25rem;
+}
+
+.auth-card {
+    width: min(440px, 100%);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 2.5rem;
+    box-shadow: 0 1px 2px rgba(20, 26, 46, 0.04), 0 12px 35px rgba(20, 26, 46, 0.06);
+}
+
+/* ============================== INTRO ================================ */
+.auth-intro {
+    margin-bottom: 2rem;
+}
+
+.eyebrow {
+    display: block;
+    margin-bottom: 0.65rem;
+    color: var(--muted);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+}
+
+.auth-intro h1 {
+    margin: 0 0 0.65rem;
+    font-family: Newsreader, Georgia, serif;
+    font-size: clamp(2.2rem, 7vw, 3rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.auth-intro p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* ============================== FORM ================================ */
+.auth-form {
+    display: grid;
+    gap: 1.15rem;
+}
+
+.auth-form.hidden {
+    display: none;
+}
+
+.field {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.field input {
+    width: 100%;
+    padding: 0.82rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--surface);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field input::placeholder {
+    color: #8A8F9E;
+}
+
+.field input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* ============================== PASSWORD ================================ */
+.password-wrap {
+    position: relative;
+}
+
+.password-wrap input {
+    padding-right: 4.5rem;
+}
+
+.show-password {
+    position: absolute;
+    top: 50%;
+    right: 0.7rem;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.show-password:hover {
+    text-decoration: underline;
+}
+
+/* ============================== ERROR ================================ */
+.field-error {
+    min-height: 0;
+    color: var(--error);
+    font-size: 0.75rem;
+}
+
+/* ============================== SUBMIT BUTTON ================================ */
+.submit-btn {
+    width: 100%;
+    margin-top: 0.35rem;
+    padding: 0.9rem 1rem;
+    border: 0;
+    border-radius: 3px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-size: 0.92rem;
+    font-weight: 600;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* ============================== FORM MESSAGE ================================ */
+.form-message {
+    min-height: 1.2rem;
+    margin: 0;
+    font-size: 0.82rem;
+    text-align: center;
+}
+
+.form-message.success {
+    color: #376047;
+}
+
+.form-message.error {
+    color: var(--error);
+}
+
+/* ============================== SWITCH LOGIN / REGISTER ================================ */
+.switch {
+    margin-top: 1.8rem;
+    padding-top: 1.3rem;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.switch button {
+    margin-left: 0.25rem;
+    border: 0;
+    background: transparent;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.switch button:hover {
+    text-decoration: underline;
+}
+
+/* ============================== FOOTER ================================ */
+footer {
+    border-top: 1px solid var(--line);
+    padding: 1.7rem 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+.foot-in {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.foot-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.foot-links a:hover {
+    color: var(--ink);
+}
+
+/* ============================== MOBILE ================================ */
+@media (max-width: 520px) {
+    .wrap {
+        width: min(1240px, calc(100% - 1.6rem));
+    }
+
+    .head-in {
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        padding-block: 0.6rem;
+    }
+
+    .head-in > .account-area {
+        flex-basis: 100%;
+        justify-content: flex-end;
+    }
+
+    .auth-page {
+        padding: 2rem 0.8rem;
+    }
+
+    .auth-card {
+        padding: 2rem 1.25rem;
+        border-left: 0;
+        border-right: 0;
+        box-shadow: none;
+    }
+
+    .head-in {
+        min-height: 64px;
+    }
+
+    .back-link {
+        font-size: 0.82rem;
+    }
+
+    .foot-in {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .foot-links {
+        justify-content: center;
+    }
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}

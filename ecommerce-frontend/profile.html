@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' http://localhost:8080; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="no-referrer">
+    <title>My profile — Mul &amp; Warp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+<header class="head">
+    <div class="wrap head-in">
+        <a href="index.html" class="mark">Mul <span>&amp;</span> Warp</a>
+        <a href="index.html" class="back-link">Back to shop</a>
+    </div>
+</header>
+
+<main class="profile-page wrap">
+    <div class="profile-heading">
+        <span class="eyebrow">YOUR ACCOUNT</span>
+        <h1>My profile</h1>
+        <p>Your account details and preferred delivery address, all in one place.</p>
+    </div>
+    <section class="profile-card" aria-live="polite">
+        <p id="profileMessage" class="form-message">Loading your profile…</p>
+        <div id="profileContent" class="profile-content" hidden>
+            <section class="profile-identity">
+                <span class="profile-kicker">ACCOUNT</span>
+                <h2 id="profileName"></h2>
+                <p id="profileEmail"></p>
+            </section>
+            <section class="profile-address">
+                <div class="profile-section-heading">
+                    <div>
+                        <span class="profile-kicker">FOR A SMOOTHER CHECKOUT</span>
+                        <h2>Delivery address</h2>
+                    </div>
+                    <span class="address-badge">Saved to your account</span>
+                </div>
+                <div id="addressSummary" class="address-summary" hidden>
+                    <div class="address-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/>
+                            <circle cx="12" cy="10" r="2.4"/>
+                        </svg>
+                    </div>
+                    <div class="address-copy">
+                        <strong id="addressRecipient"></strong>
+                        <span id="addressPhone"></span>
+                        <p id="addressLines"></p>
+                    </div>
+                    <a id="editAddress" class="address-edit" href="address.html?return=profile">Edit</a>
+                </div>
+                <div id="noAddress" class="address-empty" hidden>
+                    <p>No delivery address saved yet. Add one now to make checkout quicker.</p>
+                    <a class="address-add" href="address.html?return=profile">Add delivery address</a>
+                </div>
+            </section>
+            <a class="orders-link" href="orders.html">View your orders <span aria-hidden="true">→</span></a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="wrap foot-in">
+        <span>© 2026 Mul &amp; Warp, Mumbai</span>
+        <nav class="foot-links" aria-label="Footer"><a href="orders.html">My orders</a></nav>
+    </div>
+</footer>
+
+<script src="account.js"></script>
+<script src="profile.js"></script>
+</body>
+</html>

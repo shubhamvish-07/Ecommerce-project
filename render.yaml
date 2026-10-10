@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: ecommerce-api
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./ecommerce/Dockerfile
+    dockerContext: ./ecommerce
+    healthCheckPath: /products
+    envVars:
+      - key: DB_URL
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: UPLOADS_DIRECTORY
+        value: /tmp/uploads/products

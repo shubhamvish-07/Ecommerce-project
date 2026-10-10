@@ -1,0 +1,316 @@
+.admin-page {
+    flex: 1;
+    padding-block: clamp(2rem, 6vw, 4rem);
+}
+
+.admin-heading {
+    margin-bottom: 1.5rem;
+}
+
+.admin-heading h1 {
+    margin: 0 0 0.55rem;
+    font: 300 clamp(2.2rem, 6vw, 3.2rem)/1 Newsreader, Georgia, serif;
+}
+
+.admin-heading p,
+.list-heading p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.admin-workspace {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.admin-workspace[hidden] {
+    display: none;
+}
+
+.admin-card {
+    min-width: 0;
+    padding: clamp(1.2rem, 3vw, 2rem);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: 0 1px 2px rgba(20, 26, 46, 0.04), 0 12px 35px rgba(20, 26, 46, 0.04);
+}
+
+.admin-card h2 {
+    margin: 0 0 1.25rem;
+    font: 400 1.55rem/1.2 Newsreader, Georgia, serif;
+}
+
+.admin-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.admin-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.field-wide {
+    grid-column: 1 / -1;
+}
+
+.admin-form input,
+.admin-form textarea {
+    width: 100%;
+    padding: 0.78rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--surface);
+    color: var(--ink);
+}
+
+.admin-form textarea {
+    resize: vertical;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+    border-color: var(--accent);
+    outline: 2px solid var(--accent-soft);
+}
+
+.admin-form input[type="file"] {
+    padding: 0.58rem;
+    font-size: 0.84rem;
+}
+
+.field-hint {
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+.list-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.list-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.status-filter {
+    min-height: 34px;
+    padding: 0.4rem;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+}
+
+.list-heading h2 {
+    margin-bottom: 0.25rem;
+}
+
+.secondary-btn {
+    padding: 0.55rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--ink);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.secondary-btn:hover {
+    border-color: var(--ink);
+}
+
+.product-list {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 0.5rem;
+}
+
+.product-row {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--line);
+}
+
+.product-actions,
+.order-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.product-actions .secondary-btn,
+.order-actions .secondary-btn {
+    padding: 0.45rem 0.65rem;
+}
+
+.admin-orders-list {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 0.5rem;
+}
+
+.admin-order {
+    padding: 0.9rem;
+    border: 1px solid var(--line);
+}
+
+.admin-order-summary {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.7rem;
+    cursor: pointer;
+}
+
+.admin-order-summary span,
+.admin-order-summary strong {
+    display: block;
+}
+
+.admin-order-summary span {
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+.admin-order-summary strong {
+    overflow-wrap: anywhere;
+    font-size: 0.86rem;
+}
+
+.order-delivery {
+    margin: 1rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.84rem;
+}
+
+.order-actions {
+    margin-top: 0.85rem;
+}
+
+.product-thumb {
+    width: 64px;
+    height: 72px;
+    object-fit: cover;
+    background: var(--accent-soft);
+}
+
+.product-placeholder {
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+    font-size: 0.7rem;
+}
+
+.product-details strong {
+    display: block;
+    font: 400 1.05rem/1.3 Newsreader, Georgia, serif;
+}
+
+.product-details span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.product-inventory {
+    text-align: right;
+    font-size: 0.85rem;
+}
+
+.product-inventory span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+.form-message.error {
+    color: var(--error);
+}
+
+.form-message.success {
+    color: #376047;
+}
+
+#submitProduct:disabled,
+.secondary-btn:disabled,
+.product-actions button:disabled,
+.order-actions button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.account-area {
+    gap: 0.45rem;
+    margin-left: 0.5rem;
+}
+
+.account-btn {
+    min-height: 34px;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.76rem;
+}
+
+@media (max-width: 600px) {
+    .admin-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .field-wide {
+        grid-column: auto;
+    }
+
+    .product-row {
+        grid-template-columns: 52px minmax(0, 1fr);
+        gap: 0.7rem;
+    }
+
+    .product-thumb {
+        width: 52px;
+        height: 60px;
+    }
+
+    .product-inventory {
+        grid-column: 2;
+        text-align: left;
+    }
+
+    .product-actions {
+        grid-column: 2;
+    }
+
+    .admin-order-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .list-heading,
+    .list-actions {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 520px) {
+    .head-in {
+        height: auto;
+        min-height: 64px;
+        flex-wrap: wrap;
+        row-gap: 0.35rem;
+        padding-block: 0.4rem;
+    }
+
+    .head-in > .account-area {
+        flex-basis: 100%;
+        justify-content: flex-end;
+        margin-left: 0;
+    }
+}

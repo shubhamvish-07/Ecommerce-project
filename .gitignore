@@ -1,0 +1,11 @@
+# Local IDE state and generated build output
+.idea/
+**/target/
+/target/
+
+# Local uploads and investigation notes are not deployable source assets
+**/uploads/
+DEBUG_NOTES.md
+
+# Local workspace files
+**/*.code-workspace

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mul &amp; Warp — handloom clothing</title>
+<meta name="description" content="Handwoven cotton, khadi and linen clothing. Cut small, dyed slow.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: http://localhost:8080; connect-src 'self' http://localhost:8080; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#shop">Skip to products</a>
+
+<div class="ticker">Free shipping across India over <b>₹2,500</b> · Handwoven in Kutch &amp; Bhagalpur</div>
+
+<header class="head">
+  <div class="wrap head-in">
+    <a href="#" class="mark">Mul <span>&amp;</span> Warp</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#shop">Shop</a><a href="#cloth">The cloth</a><a href="#cloth">Our weavers</a><a href="#cloth">Care</a>
+    </nav>
+    <div class="tools">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search kurtas, linen…" aria-label="Search products" autocomplete="off">
+      </div>
+      <button class="icon-btn" id="themeBtn" aria-label="Switch colour theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2M12 19.4v2M21.4 12h-2M4.6 12h-2M18.6 5.4l-1.4 1.4M6.8 17.2l-1.4 1.4M18.6 18.6l-1.4-1.4M6.8 6.8 5.4 5.4"/></svg>
+      </button>
+      <button class="icon-btn" id="bagBtn" aria-label="Open bag" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4.5 7.5h15l-1.1 12.2a1.5 1.5 0 0 1-1.5 1.3H7.1a1.5 1.5 0 0 1-1.5-1.3Z"/><path d="M8.7 10V6.6a3.3 3.3 0 0 1 6.6 0V10"/></svg>
+        <span class="pip" id="pip">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="reveal">
+      <h1>Cloth that remembers the <em>hand</em> that made it</h1>
+      <p>Twelve weaving families, four looms, one small run at a time. Mul cotton, khadi and washed linen, cut for long Indian summers.</p>
+      <a class="hero-cta" href="#shop">Shop the monsoon edit</a>
+    </div>
+    <p class="hero-note reveal"><b>Warp 04</b>Indigo dyed in six dips over three days, then sun-set on the riverbank.</p>
+  </div>
+</section>
+
+<!-- garment line-art sprite, reused via <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+  <g id="g-shirt" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M50 22 36 26 22 32 16 56 30 62 30 104 70 104 70 62 84 56 78 32 64 26Z"/>
+    <path d="M36 26 50 38 64 26M50 38v66M30 62v42M70 62v42"/>
+    <path d="M44 52h1M44 68h1M44 84h1" stroke-linecap="round"/>
+  </g>
+  <g id="g-kurta" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M50 20 38 24 23 31 18 54 30 59 30 112 70 112 70 59 82 54 77 31 62 24Z"/>
+    <path d="M39 24v9h22v-9M50 33v28M30 96h9M61 96h9"/>
+  </g>
+  <g id="g-trouser" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M28 22h44l-2 46-4 44H52l-2-48-2 48H34l-4-44Z"/>
+    <path d="M28 31h44M50 31v37"/>
+  </g>
+  <g id="g-dress" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M50 20 38 25 26 31 21 52 32 57 27 112h46l-5-55 11-5-5-21-12-6Z"/>
+    <path d="M38 25c5 8 19 8 24 0M31 60h38M33 82h34"/>
+  </g>
+  <g id="g-scarf" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M24 28h52v62H24Z"/><path d="M31 35h38v48H31Z"/>
+    <path d="M28 90v6M36 90v6M44 90v6M52 90v6M60 90v6M68 90v6" stroke-linecap="round"/>
+  </g>
+</defs>
+</svg>
+
+<main id="shop">
+  <div class="shopbar">
+    <div class="wrap shopbar-in">
+      <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+      <div class="sortwrap">
+        <label for="sort">Sort</label>
+        <select id="sort">
+          <option value="feat">Featured</option>
+          <option value="new">Newest</option>
+          <option value="lo">Price, low to high</option>
+          <option value="hi">Price, high to low</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="count" id="count" aria-live="polite"></p>
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <section class="strip" id="cloth">
+    <div class="wrap strip-in">
+      <div><h3>Woven, not printed</h3><p>Every metre comes off a pit loom or a handloom. Slubs and small irregularities are the weave, not a fault.</p></div>
+      <div><h3>Natural dyes</h3><p>Indigo, madder and pomegranate rind. Colour softens with each wash and settles after about four.</p></div>
+      <div><h3>Wash cold, dry flat</h3><p>First wash separately in cold water. Line dry in shade. Iron on the reverse while slightly damp.</p></div>
+      <div><h3>30-day returns</h3><p>Unworn, with tags. We pick up from your address anywhere in India, free of charge.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© 2026 Mul &amp; Warp, Mumbai</span>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="#shop">Shipping</a><a href="#shop">Returns</a><a href="#shop">Size guide</a><a href="#shop">Stockists</a><a href="#shop">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="bag" id="bag" role="dialog" aria-modal="true" aria-label="Your bag" aria-hidden="true">
+  <div class="bag-head">
+    <h2>Your bag</h2>
+    <button class="icon-btn" id="closeBag" aria-label="Close bag">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div id="bagBody" style="display:contents"></div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js?v=20261010-size-stock2"></script>
+<script src="account.js"></script>
+</body>
+</html>

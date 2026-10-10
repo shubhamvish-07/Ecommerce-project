@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: http://localhost:8080; connect-src 'self' http://localhost:8080; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="no-referrer">
+    <title>My orders — Mul &amp; Warp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="orders.css">
+</head>
+<body>
+<header class="head">
+    <div class="wrap head-in">
+        <a href="index.html" class="mark">Mul <span>&amp;</span> Warp</a>
+        <a href="index.html" class="back-link">Back to shop</a>
+    </div>
+</header>
+
+<main class="orders-page wrap">
+    <div class="orders-heading">
+        <span class="eyebrow">YOUR ACCOUNT</span>
+        <h1>My orders</h1>
+        <p>Review your recent orders and their items.</p>
+    </div>
+    <section class="orders-card" aria-live="polite">
+        <p id="ordersMessage" class="form-message">Loading your orders…</p>
+        <div id="signInPrompt" class="sign-in-prompt" hidden>
+            <p>Sign in to view your orders.</p>
+            <a class="submit-btn" href="auth.html">Sign in</a>
+        </div>
+        <button id="retryOrders" class="secondary-btn" type="button" hidden>Try again</button>
+        <div id="ordersList" class="orders-list"></div>
+    </section>
+</main>
+
+<footer>
+    <div class="wrap foot-in">
+        <span>© 2026 Mul &amp; Warp, Mumbai</span>
+        <nav class="foot-links" aria-label="Footer"><a href="index.html">Shop</a></nav>
+    </div>
+</footer>
+
+<script src="account.js"></script>
+<script src="orders.js?v=20261010-size-stock1"></script>
+</body>
+</html>

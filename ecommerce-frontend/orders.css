@@ -1,0 +1,140 @@
+.orders-page {
+    flex: 1;
+    padding-block: clamp(2rem, 6vw, 4rem);
+}
+
+.orders-heading {
+    margin-bottom: 1.5rem;
+}
+
+.orders-heading h1 {
+    margin: 0 0 0.55rem;
+    font: 300 clamp(2.2rem, 6vw, 3.2rem)/1 Newsreader, Georgia, serif;
+}
+
+.orders-heading p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.orders-card {
+    padding: clamp(1.2rem, 3vw, 2rem);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: 0 1px 2px rgba(20, 26, 46, 0.04), 0 12px 35px rgba(20, 26, 46, 0.04);
+}
+
+.orders-list {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.order-entry {
+    padding: 1rem;
+    border: 1px solid var(--line);
+}
+
+.order-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    cursor: pointer;
+}
+
+.order-summary strong,
+.order-summary span {
+    display: block;
+}
+
+.order-summary strong {
+    font-weight: 600;
+}
+
+.order-summary span {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.order-items {
+    display: grid;
+    gap: 0.65rem;
+    margin: 1rem 0 0;
+    padding: 1rem 0 0;
+    border-top: 1px solid var(--line);
+    list-style: none;
+}
+
+.order-items li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.88rem;
+}
+
+.order-delivery {
+    margin: 1rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.84rem;
+}
+
+.secondary-btn {
+    margin-bottom: 1rem;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--ink);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.secondary-btn:hover {
+    border-color: var(--ink);
+}
+
+.sign-in-prompt p {
+    color: var(--muted);
+}
+
+.sign-in-prompt .submit-btn {
+    display: inline-block;
+    width: auto;
+}
+
+.account-area {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-left: 0.5rem;
+}
+
+.account-btn {
+    min-height: 34px;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.76rem;
+}
+
+@media (max-width: 650px) {
+    .order-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .head-in {
+        height: auto;
+        min-height: 64px;
+        flex-wrap: wrap;
+        row-gap: 0.35rem;
+        padding-block: 0.4rem;
+    }
+
+    .head-in > .account-area {
+        flex-basis: 100%;
+        justify-content: flex-end;
+        margin-left: 0;
+    }
+}
