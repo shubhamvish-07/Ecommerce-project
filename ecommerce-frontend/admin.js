@@ -338,7 +338,7 @@ function resetProductForm() {
 
 async function initializeAdminPage() {
     const token = localStorage.getItem("accessToken");
-    const role = localStorage.getItem("userRole");
+    const role = String(localStorage.getItem("userRole") || "").toUpperCase();
 
     if (!token || role !== "ADMIN") {
         showMessage(

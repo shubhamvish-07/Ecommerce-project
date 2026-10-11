@@ -11,339 +11,339 @@ const switchLink = document.querySelector("#switchLink");
 
 function showLoginForm() {
 
-registerForm.classList.add("hidden");
-loginForm.classList.remove("hidden");
+ registerForm.classList.add("hidden");
+ loginForm.classList.remove("hidden");
 
-formTitle.textContent = "Welcome back.";
+ formTitle.textContent = "Welcome back.";
 
-formDescription.textContent =
-    "Sign in to continue shopping and view your orders.";
+ formDescription.textContent =
+     "Sign in to continue shopping and view your orders.";
 
-switchText.textContent =
-    "Don't have an account?";
+ switchText.textContent =
+     "Don't have an account?";
 
-switchLink.textContent = "Sign up";
-switchLink.href = "#register";
+ switchLink.textContent = "Sign up";
+ switchLink.href = "#register";
 
-clearMessages();
+ clearMessages();
 
 }
 
 function showRegisterForm() {
 
-loginForm.classList.add("hidden");
-registerForm.classList.remove("hidden");
+ loginForm.classList.add("hidden");
+ registerForm.classList.remove("hidden");
 
-formTitle.textContent = "Create your account.";
+ formTitle.textContent = "Create your account.";
 
-formDescription.textContent =
-    "Join us to save your details and keep track of your orders.";
+ formDescription.textContent =
+     "Join us to save your details and keep track of your orders.";
 
-switchText.textContent =
-    "Already have an account?";
+ switchText.textContent =
+     "Already have an account?";
 
-switchLink.textContent = "Login";
-switchLink.href = "#login";
+ switchLink.textContent = "Login";
+ switchLink.href = "#login";
 
-clearMessages();
+ clearMessages();
 
 }
 
 if (window.location.hash === "#register") {
-showRegisterForm();
+ showRegisterForm();
 } else {
-showLoginForm();
+ showLoginForm();
 }
 
 switchLink.addEventListener("click", event => {
 
-event.preventDefault();
+ event.preventDefault();
 
-if (loginForm.classList.contains("hidden")) {
-    showLoginForm();
-} else {
-    showRegisterForm();
-}
+ if (loginForm.classList.contains("hidden")) {
+     showLoginForm();
+ } else {
+     showRegisterForm();
+ }
 
 });
 
 document.querySelectorAll(".show-password").forEach(button => {
 
-button.addEventListener("click", () => {
+ button.addEventListener("click", () => {
 
-    const targetId = button.dataset.target;
-    const input = document.querySelector(`#${targetId}`);
+     const targetId = button.dataset.target;
+     const input = document.querySelector(`#${targetId}`);
 
-    if (input.type === "password") {
+     if (input.type === "password") {
 
-        input.type = "text";
-        button.textContent = "Hide";
+         input.type = "text";
+         button.textContent = "Hide";
 
-    } else {
+     } else {
 
-        input.type = "password";
-        button.textContent = "Show";
-    }
+         input.type = "password";
+         button.textContent = "Show";
+     }
 
-});
+ });
 
 });
 
 loginForm.addEventListener("submit", async event => {
 
-event.preventDefault();
+ event.preventDefault();
 
-clearMessages();
+ clearMessages();
 
-const email =
-    document.querySelector("#loginEmail").value.trim();
+ const email =
+     document.querySelector("#loginEmail").value.trim();
 
-const password =
-    document.querySelector("#loginPassword").value;
+ const password =
+     document.querySelector("#loginPassword").value;
 
-let valid = true;
+ let valid = true;
 
-if (!email) {
+ if (!email) {
 
-    showError(
-        "loginEmailError",
-        "Email is required"
-    );
+     showError(
+         "loginEmailError",
+         "Email is required"
+     );
 
-    valid = false;
-}
+     valid = false;
+ }
 
-if (!password) {
+ if (!password) {
 
-    showError(
-        "loginPasswordError",
-        "Password is required"
-    );
+     showError(
+         "loginPasswordError",
+         "Password is required"
+     );
 
-    valid = false;
-}
+     valid = false;
+ }
 
-if (!valid) {
-    return;
-}
+ if (!valid) {
+     return;
+ }
 
-try {
+ try {
 
-    const response = await fetch(
-        "http://localhost:8080/auth/login",
-        {
-            method: "POST",
+     const response = await fetch(
+         "http://localhost:8080/auth/login",
+         {
+             method: "POST",
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+             headers: {
+                 "Content-Type": "application/json"
+             },
 
-            body: JSON.stringify({
-                email: email,
-                password: password
-            })
-        }
-    );
+             body: JSON.stringify({
+                 email: email,
+                 password: password
+             })
+         }
+     );
 
-    const data = await response.json();
+     const data = await response.json();
 
-    if (!response.ok) {
+     if (!response.ok) {
 
-        showMessage(
-            "loginMessage",
-            response.status === 429
-                ? "Too many attempts. Please wait before trying again."
-                : data.message || "Login failed",
-            "error"
-        );
+         showMessage(
+             "loginMessage",
+             response.status === 429
+                 ? "Too many attempts. Please wait before trying again."
+                 : data.message || "Login failed",
+             "error"
+         );
 
-        return;
-    }
+         return;
+     }
 
-    localStorage.setItem(
-        "accessToken",
-        data.accessToken
-    );
+     localStorage.setItem(
+         "accessToken",
+         data.accessToken
+     );
 
-    if (data.role) {
-        localStorage.setItem("userRole", data.role);
-    } else {
-        localStorage.removeItem("userRole");
-    }
+     if (data.role) {
+         localStorage.setItem("userRole", String(data.role).toUpperCase());
+     } else {
+         localStorage.removeItem("userRole");
+     }
 
-    showMessage(
-        "loginMessage",
-        "Login successful",
-        "success"
-    );
+     showMessage(
+         "loginMessage",
+         "Login successful",
+         "success"
+     );
 
-    setTimeout(() => {
-        const returnTo = sessionStorage.getItem("mw.returnTo");
-        sessionStorage.removeItem("mw.returnTo");
-        window.location.href = returnTo && returnTo.startsWith("/") && !returnTo.startsWith("//")
-            ? returnTo
-            : "index.html";
-    }, 700);
+     setTimeout(() => {
+         const returnTo = sessionStorage.getItem("mw.returnTo");
+         sessionStorage.removeItem("mw.returnTo");
+         window.location.href = returnTo && returnTo.startsWith("/") && !returnTo.startsWith("//")
+             ? returnTo
+             : "index.html";
+     }, 700);
 
-} catch (error) {
+ } catch (error) {
 
-    showMessage(
-        "loginMessage",
-        "Unable to connect to server",
-        "error"
-    );
-}
+     showMessage(
+         "loginMessage",
+         "Unable to connect to server",
+         "error"
+     );
+ }
 
 });
 
 registerForm.addEventListener("submit", async event => {
 
-event.preventDefault();
+ event.preventDefault();
 
-clearMessages();
+ clearMessages();
 
-const name =
-    document.querySelector("#registerName").value.trim();
+ const name =
+     document.querySelector("#registerName").value.trim();
 
-const email =
-    document.querySelector("#registerEmail").value.trim();
+ const email =
+     document.querySelector("#registerEmail").value.trim();
 
-const password =
-    document.querySelector("#registerPassword").value;
+ const password =
+     document.querySelector("#registerPassword").value;
 
-let valid = true;
+ let valid = true;
 
-if (!name) {
+ if (!name) {
 
-    showError(
-        "registerNameError",
-        "Name is required"
-    );
+     showError(
+         "registerNameError",
+         "Name is required"
+     );
 
-    valid = false;
-}
+     valid = false;
+ }
 
-if (!email) {
+ if (!email) {
 
-    showError(
-        "registerEmailError",
-        "Email is required"
-    );
+     showError(
+         "registerEmailError",
+         "Email is required"
+     );
 
-    valid = false;
-}
+     valid = false;
+ }
 
-if (!password) {
+ if (!password) {
 
-    showError(
-        "registerPasswordError",
-        "Password is required"
-    );
+     showError(
+         "registerPasswordError",
+         "Password is required"
+     );
 
-    valid = false;
+     valid = false;
 
-} else if (password.length < 12) {
+ } else if (password.length < 12) {
 
-    showError(
-        "registerPasswordError",
-        "Password must be at least 12 characters"
-    );
+     showError(
+         "registerPasswordError",
+         "Password must be at least 12 characters"
+     );
 
-    valid = false;
-}
+     valid = false;
+ }
 
-if (!valid) {
-    return;
-}
+ if (!valid) {
+     return;
+ }
 
-try {
+ try {
 
-    const response = await fetch(
-        "http://localhost:8080/auth/register",
-        {
-            method: "POST",
+     const response = await fetch(
+         "http://localhost:8080/auth/register",
+         {
+             method: "POST",
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+             headers: {
+                 "Content-Type": "application/json"
+             },
 
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                password: password
-            })
-        }
-    );
+             body: JSON.stringify({
+                 name: name,
+                 email: email,
+                 password: password
+             })
+         }
+     );
 
-    const data = await response.json();
+     const data = await response.json();
 
-    if (!response.ok) {
+     if (!response.ok) {
 
-        showMessage(
-            "registerMessage",
-            response.status === 429
-                ? "Too many registration attempts. Please try again later."
-                : data.message || "Registration failed",
-            "error"
-        );
+         showMessage(
+             "registerMessage",
+             response.status === 429
+                 ? "Too many registration attempts. Please try again later."
+                 : data.message || "Registration failed",
+             "error"
+         );
 
-        return;
-    }
+         return;
+     }
 
-    document.querySelector("#loginEmail").value = email;
+     document.querySelector("#loginEmail").value = email;
 
-    document.querySelector("#registerPassword").value = "";
+     document.querySelector("#registerPassword").value = "";
 
-    showLoginForm();
+     showLoginForm();
 
-    showMessage(
-        "loginMessage",
-        "Registration successful. Please sign in.",
-        "success"
-    );
+     showMessage(
+         "loginMessage",
+         "Registration successful. Please sign in.",
+         "success"
+     );
 
-} catch (error) {
+ } catch (error) {
 
-    showMessage(
-        "registerMessage",
-        "Unable to connect to server",
-        "error"
-    );
-}
+     showMessage(
+         "registerMessage",
+         "Unable to connect to server",
+         "error"
+     );
+ }
 
 });
 
 function showError(id, message) {
 
-document.querySelector(`#${id}`).textContent = message;
+ document.querySelector(`#${id}`).textContent = message;
 
 }
 
 function showMessage(id, message, type) {
 
-const element =
-    document.querySelector(`#${id}`);
+ const element =
+     document.querySelector(`#${id}`);
 
-element.textContent = message;
+ element.textContent = message;
 
-element.className =
-    `form-message ${type}`;
+ element.className =
+     `form-message ${type}`;
 
 }
 
 function clearMessages() {
 
-document
-    .querySelectorAll(".field-error")
-    .forEach(element => {
-        element.textContent = "";
-    });
+ document
+     .querySelectorAll(".field-error")
+     .forEach(element => {
+         element.textContent = "";
+     });
 
-document
-    .querySelectorAll(".form-message")
-    .forEach(element => {
-        element.textContent = "";
-        element.className = "form-message";
-    });
+ document
+     .querySelectorAll(".form-message")
+     .forEach(element => {
+         element.textContent = "";
+         element.className = "form-message";
+     });
 
 }
