@@ -32,8 +32,9 @@ Set the prompted values for `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`, and
 `JWT_SECRET` in Render's secret environment variables. Generate a new,
 high-entropy JWT secret; do not reuse a local value. Set
 `CORS_ALLOWED_ORIGINS` to the GitHub Pages origin only, for example
-`https://OWNER.github.io` (no repository path). Keep `UPLOADS_DIRECTORY` at
-the blueprint's default for this free-tier setup.
+`https://OWNER.github.io` (no repository path). Set the Cloudinary variables
+`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET` in
+Render as well; the API uses `IMAGE_STORAGE=cloudinary` from the Blueprint.
 
 After the first deploy, copy the Render service's HTTPS URL. Sign up through
 the site, then promote the intended administrator account using the TiDB
@@ -50,10 +51,21 @@ add `API_BASE_URL` with the Render HTTPS URL (for example,
 The published site URL is shown in the repository's **Settings → Pages** and
 in the `github-pages` deployment environment after the workflow succeeds.
 
-## Free-tier storage caveats
+## Product image storage
 
-The database persists product and order records, but this configuration stores
-uploaded product images on Render's temporary filesystem. Those uploads can be
-lost whenever the API restarts or deploys; use an object-storage image service
-before relying on uploaded product images. Product images already on a local
-machine are not automatically copied to the hosted service.
+The Render Blueprint stores uploaded product images in Cloudinary because
+Render's filesystem is temporary. Set the Cloudinary cloud name, API key, and
+API secret in Render's environment settings (keep the API secret private).
+Optionally set `CLOUDINARY_FOLDER`; it defaults to `mul-and-warp/products`.
+The admin product upload sends image files to Cloudinary and saves the returned
+HTTPS image URL with the product. Local development defaults to disk storage.
+
+Products created before Cloudinary was enabled may refer to local `/uploads/`
+files that Render no longer has. Edit those products and upload their images
+again; leaving the image field empty does not replace the old URL.
+
+## Free-tier caveats
+
+TiDB and Cloudinary's free plans have usage quotas. Product images already on a
+local machine are not automatically copied to Cloudinary; upload them again
+through the admin page.
